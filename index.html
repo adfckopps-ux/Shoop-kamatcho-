@@ -1,0 +1,104 @@
+<style>
+    /* ... keep previous styles ... */
+
+    .shop-section {
+        padding: 100px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .product-card {
+        background: #111;
+        padding: 15px;
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 400px;
+        background: #1a1a1a;
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+
+    .options-container {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0;
+    }
+
+    select {
+        background: #000;
+        color: #fff;
+        border: 1px solid #333;
+        padding: 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        flex: 1;
+        outline: none;
+        cursor: pointer;
+    }
+
+    select:focus { border-color: var(--accent); }
+
+    .price {
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin: 10px 0;
+    }
+</style>
+
+<section class="shop-section" id="in-stock">
+    <h2 style="font-family: 'Syncopate'; font-size: 1rem; margin-bottom: 50px; text-align: left; border-left: 3px solid var(--accent); padding-left: 15px;">
+        01. BAGGY JEANS / IN STOCK
+    </h2>
+
+    <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80" class="product-image" alt="Baggy Denim">
+            <div class="logo" style="font-size: 0.8rem; margin-bottom: 5px;">SPOTT ARCHIVE</div>
+            <h3 style="font-size: 1rem; margin: 5px 0;">RAW EDGE BAGGY DENIM</h3>
+            <div class="price">$45.00</div>
+
+            <div class="options-container">
+                <select name="size">
+                    <option value="" disabled selected>SELECT SIZE</option>
+                    <option value="28">W28</option>
+                    <option value="30">W30</option>
+                    <option value="32">W32</option>
+                    <option value="34">W34</option>
+                </select>
+
+                <select name="color">
+                    <option value="" disabled selected>COLOR</option>
+                    <option value="washed-blue">WASHED BLUE</option>
+                    <option value="black">VINTAGE BLACK</option>
+                    <option value="grey">GRAPHITE GREY</option>
+                </select>
+            </div>
+
+            <button class="buy-btn" onclick="orderWhatsApp('Raw Edge Baggy Denim')">INQUIRE VIA WHATSAPP</button>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    // Keep your toggleMenu function and add this:
+    function orderWhatsApp(itemName) {
+        const size = document.getElementsByName('size')[0].value;
+        const color = document.getElementsByName('color')[0].value;
+        
+        if(!size || !color) {
+            alert("Please select a size and color first!");
+            return;
+        }
+
+        const message = `Hi Spottshop! I'm interested in the ${itemName}. Size: ${size}, Color: ${color}. Is it still available?`;
+        const whatsappURL = `https://wa.me/YOURPHONE?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+    }
+</script>
